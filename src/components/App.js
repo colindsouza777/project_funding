@@ -1,8 +1,11 @@
 import React from 'react';
 import { BrowserRouter ,Route,Switch } from 'react-router-dom';
-import Escrow from './pages/Escrow/Escrow';
-import Ballot from './pages/Vote/Vote';
-import CreateBallot from './pages/CreateBallot/CreateBallot';
+import Escrow from './pages/Escrow/ReportAnimal';
+import Ballot from './pages/Vote/ReportAnimal';
+import CreateBallot from './pages/CreateBallot/ReportAnimal';
+import ReportAnimal from './ReportAnimal';
+// import CreateBallot from './pages/CreateBallot/CreateBallot';
+
 
 
 function App() {
@@ -13,6 +16,7 @@ function App() {
       <Route exact path="/escrow" component={Escrow} />
       <Route exact path="/ballot" component={Ballot} />
       <Route exact path="/createballot" component={CreateBallot} />
+      <Route exact path="/report" component={ReportAnimal} />
       
       </Switch>
     </div>

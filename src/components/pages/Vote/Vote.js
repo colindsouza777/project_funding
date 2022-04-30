@@ -51,15 +51,15 @@ class Vote extends Component {
       const ballot = new web3.eth.Contract(Ballot.abi, networkData.address);
       this.setState({ ballot: ballot });
       // console.log(ballot)
-      const deposits = await ballot.methods
-        .getData("1")
-        .call({ from: this.state.account });
-      this.setState({ data: deposits });
-      console.log(this.state.data[0]);
-      console.log(this.state.data[1]);
-      console.log(this.state.data[2]);
-      console.log(parseInt(this.state.data[3]));
-      console.log(parseInt(this.state.data[4]));
+      // const deposits = await ballot.methods
+      //   .getData("2")
+      //   .call({ from: this.state.account });
+      // this.setState({ data: deposits });
+      // console.log(this.state.data[0]);
+      // console.log(this.state.data[1]);
+      // console.log(this.state.data[2]);
+      // console.log(parseInt(this.state.data[3]));
+      // console.log(parseInt(this.state.data[4]));
       // const balance = await ballot.methods.balance().call();
 
       // console.log("deposits");

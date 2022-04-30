@@ -10,12 +10,13 @@ module.exports = {
     },
 
     my_local: {
-      host: "127.0.0.1",     
-      port: 8545,           
+      host: "192.168.1.109",     
+      port: 8501,           
       network_id: "*", 
-      gas: "900000",         
+      // gas: "900000",         
        
     },
+
         
 
   },

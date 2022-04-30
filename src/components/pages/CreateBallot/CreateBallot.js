@@ -39,9 +39,9 @@ class CreateBallot extends Component {
         "Non-Ethereum browser detected. You should consider trying MetaMask!"
       );
     }
-    window.web3 = new Web3(
-      new Web3.providers.HttpProvider("HTTP://127.0.0.1:8545")
-    );
+    // window.web3 = new Web3(
+    //   new Web3.providers.HttpProvider("HTTP://127.0.0.1:8545")
+    // );
   }
 
   async loadBlockchainData() {
@@ -68,7 +68,8 @@ class CreateBallot extends Component {
       // console.log(ballot)
       //   const deposits = await ballot.methods.payment().call({from: this.state.account});
       // const balance = await ballot.methods.balance().call();
-
+      const somedata = await ballot.methods.getData("2").call({from: this.state.account});
+      console.log("somedata", somedata)
       //   console.log("deposits");
       //   console.log(deposits);
       // const balanceStatus = await this.state.ballot.methods.balance().call();
@@ -130,14 +131,19 @@ class CreateBallot extends Component {
   }
 
   async createProposal(event){
+    console.log("1", this.state.proposalName, this.state.imgHash);
+    console.log(this.state.account)
       event.preventDefault()
+      // return
+    //   const somedata = await this.state.ballot.methods.getData("1").call({from: this.state.account});
+    // const newId = (Number(somedata[0]) + 1) + "" 
     this.setState({ loading: true });
     const data = {
       from: this.state.account,
       gas:3000000
     };
     this.state.ballot.methods
-      .addProposal("1", "Project 1", this.state.imgHash)  //this.state.proposalName
+      .addProposal("2", this.state.proposalName, this.state.imgHash)  //this.state.proposalName
       .send(data)
       .on("transactionHash", async (transactionHash) => {
         this.setState({ loading: false });
@@ -198,8 +204,10 @@ class CreateBallot extends Component {
                       id="productName"
                       type="text"
                       ref={(input) => {
-                        this.state.proposalName = input;
+                        // this.state.proposalName = input;
+                        // this.setState({proposalName: input})
                       }}
+                      onChange={(e) => {this.setState({proposalName: e.target.value})}}
                       className="form-control"
                       placeholder="Name"
                       required

@@ -103,6 +103,29 @@ contract Ballot {
         }
     }
 
+    function voteResult() public view
+            returns (uint winningProposal_)
+    {
+        uint winningVoteCount = 0;
+        for (uint p = 0; p < proposals.length; p++) {
+            if (proposals[p].voteCount > winningVoteCount) {
+                winningVoteCount = proposals[p].voteCount;
+                winningProposal_ = p;
+            }
+        }
+    }
+
+    function voteResults(string memory id) public view
+            returns (bool result)
+    {
+        if(data[id].yesCount > data[id].noCount){
+            result = true;
+        }
+        else{
+            result = false;
+        }
+    }
+
     
     function winnerName() public view
             returns (string memory winnerName_)
